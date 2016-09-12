@@ -22,7 +22,7 @@ namespace House
         {
             get
             {
-                return base.Description + " You see " + DoorDescription;
+                return base.Description + " You see " + DoorDescription + ".";
             }
         }
 

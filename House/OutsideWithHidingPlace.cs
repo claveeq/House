@@ -15,5 +15,13 @@ namespace House
 
       
         public string HidingPlace { get;  private set;  }
+
+        public override string Description
+        {
+            get
+            {
+                return base.Description + " Maybe he is " + HidingPlace;
+            }
+        }
     }
 }

@@ -22,11 +22,11 @@ namespace House
         RoomWithHidingPlace secondBedRoom;
         RoomWithHidingPlace bathRoom;
 
-        Room dinningRoom;
+        RoomWithHidingPlace diningRoom;
         RoomWithDoor kitchen;
         RoomWithDoor livingRoom;
 
-        Outside garden;
+        OutsideWithHidingPlace garden;
         OutsideWithDoor frontYard;
         OutsideWithDoor backYard;
 
@@ -37,31 +37,30 @@ namespace House
         {
             InitializeComponent();
             CreateObjects();
-            MoveToANewLocation(garden);
+            RedrawForm();
         }
 
         private void CreateObjects()
         {
 
             stairs = new Room("Stairs","a wooden banister");
-            upstairsHallway = new RoomWithHidingPlace("Updstairs Hallway", "a picture of a dog","a closet to hide in." );
+            upstairsHallway = new RoomWithHidingPlace("Updstairs Hallway", "a picture of a dog","the closet." );
             mastersBedRoom = new RoomWithHidingPlace("Master's Bedroom", "a large bed", "under the bed");
             secondBedRoom = new RoomWithHidingPlace("Second Bedroom", "a small bed", "under the bed");
             bathRoom = new RoomWithHidingPlace("Master's Bedroom", "sink and a toilet", "in the shower"); ;
+            diningRoom = new RoomWithHidingPlace("Dining Room", "a crystal chandelier","in the tall armoire");
+            kitchen = new RoomWithDoor("Kitchen", "an antique carpet", "a screen door","in the cabinet");
+            livingRoom = new RoomWithDoor("Living Room", "an antique carpet", "an oak door with a brass knob","in the closet");
 
-            dinningRoom = new Room("Dinning Room", "a crystal chandelier");
-            kitchen = new RoomWithDoor("Kitchen", "an antique carpet", "a screen door","in a cabinet");
-            livingRoom = new RoomWithDoor("Living Room", "an antique carpet", "an oak door with a brass knob","in a closet");
-
-            garden = new Outside("Garden", false);
+            garden = new OutsideWithHidingPlace("Garden", false, " in the garage");
             frontYard = new OutsideWithDoor("Front Yard", false, "an oak door with a brass knob");
             backYard = new OutsideWithDoor("Back Yard", true, "a screen door");
 
             driveway = new OutsideWithHidingPlace("Driveway", true, "in the garage");
 
-            dinningRoom.Exits = new Location[] { livingRoom, kitchen };
-            kitchen.Exits = new Location[] { dinningRoom };
-            livingRoom.Exits = new Location[] { dinningRoom , stairs};
+            diningRoom.Exits = new Location[] { livingRoom, kitchen };
+            kitchen.Exits = new Location[] { diningRoom };
+            livingRoom.Exits = new Location[] { diningRoom , stairs};
             garden.Exits = new Location[] { frontYard, backYard };
             frontYard.Exits = new Location[] { backYard, garden , driveway};
             backYard.Exits = new Location[] { frontYard, garden , driveway};
@@ -96,13 +95,17 @@ namespace House
             description.Text = currentLocation.Description;
 
             if (currentLocation is IHasExteriorDoor)
-            {
                 goThroughTheDoor.Visible = true;
-            }
-            else
-            {
+
+            else     
                 goThroughTheDoor.Visible = false;
-            }
+
+
+            if (currentLocation is IHidingPlace)
+                check.Visible = true;
+
+            else
+                check.Visible = false;
         }
         
         public void RedrawForm()
@@ -128,6 +131,7 @@ namespace House
         {
             MoveToANewLocation(currentLocation.Exits[exits.SelectedIndex]);
         }
+
 
         private void goThroughTheDoor_Click(object sender, EventArgs e)
         {

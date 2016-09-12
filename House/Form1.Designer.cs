@@ -54,7 +54,6 @@
             this.goHere.TabIndex = 1;
             this.goHere.Text = "Go Here";
             this.goHere.UseVisualStyleBackColor = true;
-            this.goHere.Visible = false;
             this.goHere.Click += new System.EventHandler(this.goHere_Click);
             // 
             // goThroughTheDoor
@@ -65,7 +64,6 @@
             this.goThroughTheDoor.TabIndex = 2;
             this.goThroughTheDoor.Text = "Go through the door";
             this.goThroughTheDoor.UseVisualStyleBackColor = true;
-            this.goThroughTheDoor.Visible = false;
             this.goThroughTheDoor.Click += new System.EventHandler(this.goThroughTheDoor_Click);
             // 
             // exits
@@ -75,7 +73,6 @@
             this.exits.Name = "exits";
             this.exits.Size = new System.Drawing.Size(169, 21);
             this.exits.TabIndex = 3;
-            this.exits.Visible = false;
             // 
             // check
             // 
@@ -85,7 +82,6 @@
             this.check.TabIndex = 4;
             this.check.Text = "Check";
             this.check.UseVisualStyleBackColor = true;
-            this.check.Visible = false;
             this.check.Click += new System.EventHandler(this.check_Click);
             // 
             // hide
@@ -115,7 +111,7 @@
             this.Controls.Add(this.goHere);
             this.Controls.Add(this.description);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Hide and Seek";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
