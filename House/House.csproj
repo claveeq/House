@@ -53,13 +53,17 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="IHasExteriorDoor.cs" />
+    <Compile Include="IHidingPlace.cs" />
     <Compile Include="Location.cs" />
+    <Compile Include="Opponent.cs" />
     <Compile Include="Outside.cs" />
     <Compile Include="OutsideWithDoor.cs" />
+    <Compile Include="OutsideWithHidingPlace.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Room.cs" />
     <Compile Include="RoomWithDoor.cs" />
+    <Compile Include="RoomWithHidingPlace.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -72,6 +76,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="ClassDiagram1.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
