@@ -104,6 +104,20 @@ namespace House
                 goThroughTheDoor.Visible = false;
             }
         }
+        
+        public void RedrawForm()
+        {
+            description.Clear();
+            MoveToANewLocation(garden);
+            opponent = new Opponent(livingRoom);
+            timer1.Enabled = false;
+            exits.Visible = false;
+            goHere.Visible = false;
+            goThroughTheDoor.Visible = false;
+            check.Visible = false;
+            hide.Enabled = true;
+            num = 1;
+        }
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -128,9 +142,11 @@ namespace House
 
         private void check_Click(object sender, EventArgs e)
         {
- 
             if (opponent.Check(currentLocation))
+            {
                 MessageBox.Show("You caught me!");
+                RedrawForm();
+            }                
             else
                 MessageBox.Show("He's not here!");
         }
@@ -149,6 +165,7 @@ namespace House
                 check.Visible = true;
                 hide.Enabled = false;
                 timer1.Stop();
+
             }
         }
     }
