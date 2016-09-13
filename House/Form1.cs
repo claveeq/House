@@ -112,7 +112,7 @@ namespace House
         {
             description.Clear();
             MoveToANewLocation(garden);
-            opponent = new Opponent(livingRoom);
+            opponent = new Opponent(frontYard);
             timer1.Enabled = false;
             exits.Visible = false;
             goHere.Visible = false;
@@ -169,7 +169,6 @@ namespace House
                 check.Visible = true;
                 hide.Enabled = false;
                 timer1.Stop();
-
             }
         }
     }

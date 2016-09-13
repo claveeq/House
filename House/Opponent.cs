@@ -24,20 +24,12 @@ namespace House
             {
                 if (myLocation is IHasExteriorDoor)
                 {
+                    IHasExteriorDoor hasDoor = myLocation as IHasExteriorDoor;
+
                     if (random.Next(2) == 1)
-                    {
-                        IHasExteriorDoor hasDoor = myLocation as IHasExteriorDoor;
-                        myLocation = hasDoor.DoorLocation;
-                    }
-                    else
-                    {
-                        myLocation = myLocation.Exits[random.Next(myLocation.Exits.Length)];
-                    }
-                }
-                else
-                {
-                    myLocation = myLocation.Exits[random.Next(myLocation.Exits.Length)];
-                }
+                    myLocation = hasDoor.DoorLocation;
+                }                            
+                myLocation = myLocation.Exits[random.Next(myLocation.Exits.Length)]; 
             }
         }
         
